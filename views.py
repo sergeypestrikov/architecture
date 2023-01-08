@@ -9,19 +9,19 @@ class Index:
 
 class About:
     def __call__(self, request):
-        return '200 OK', 'about'
+        return '200 OK', render('about.html', date=request.get('date', None))
 
 
 class Blog:
     def __call__(self, request):
-        return '200 OK', 'blog'
+        return '200 OK', render('blog.html', date=request.get('date', None))
 
 
 class Courses:
     def __call__(self, request):
-        return '200 OK', 'courses'
+        return '200 OK', render('courses.html', date=request.get('date', None))
 
 
 class Contacts:
     def __call__(self, request):
-        return '200 OK', 'contacts'
+        return '200 OK', render('contacts.html', date=request.get('date', None))

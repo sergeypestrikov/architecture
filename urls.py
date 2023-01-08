@@ -11,7 +11,7 @@ def other_front(request):
     request['key'] = 'key'
 
 
-fronts = [front_controller(), other_front]
+fronts = [front_controller, other_front]
 
 routes = {
     '/': Index(),
