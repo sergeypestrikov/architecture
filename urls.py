@@ -1,5 +1,5 @@
 from datetime import date
-from views import Index, About, Courses, Contacts, Blog
+from views import Index, News, Courses, Contacts, Blog
 
 
 # Реализация Front Controller
@@ -15,7 +15,7 @@ fronts = [front_controller, other_front]
 
 routes = {
     '/': Index(),
-    '/about/': About(),
+    '/news/': News(),
     '/blog/': Blog(),
     '/courses/': Courses(),
     '/contacts/': Contacts(),

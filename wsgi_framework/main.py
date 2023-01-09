@@ -1,6 +1,6 @@
 class PageNotFound:
     def __call__(self, request):
-        return '404 Page not found'
+        return '404 What', '404 Page not found'
 
 
 class Framework:
@@ -23,9 +23,9 @@ class Framework:
         request = {}
         # Паттерн Front Controller
         # Наполняем словарь request элементами - получает все контроллеры
-        for front_controller in self.fronts_list:
-            front_controller(request)
+        for front in self.fronts_list:
+            front(request)
         # Запуск контроллера с передачей объекта request
         code, body = view(request)
-        start_response(code, [('Content type', 'text/html')])
+        start_response(code, [('Content-Type', 'text/html')])
         return [body.encode('UTF-8')]
