@@ -1,41 +1,14 @@
-<!DOCTYPE HTML>
-<html>
-
-<head>
-  <meta charset = "utf-8" >
-  <title>black &amp; white - another page</title>
-  <meta name="description" content="website description" />
-  <meta name="keywords" content="website keywords, website keywords" />
-  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-  <link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
-</head>
-
-<body>
-  <div id="main">
-    <div id="header">
-      <div id="logo">
-        <div id="logo_text">
-          <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href=/index/>Popeye<span class="logo_colour"></span></a></h1>
-          <h2>The Yacht School</h2>
-        </div>
-      </div>
-      <div id="menubar">
-        <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li><a href='/'>Home</a></li>
-          <li><a href=/news/>Новости</a></li>
-          <li><a href=/blog/>Блог</a></li>
-          <li><a href=/courses/>Курсы</a></li>
-          <li><a href=/contacts/>Контакты</a></li>
-        </ul>
-      </div>
-    </div>
+{% block title %}
+    {% include "base.html" %}
+{% endblock %}
+{% block menu %}
+	{% include "menu.html" %}
+{% endblock %}
     <div id="content_header"></div>
     <div id="site_content">
       <div class="sidebar">
         <!-- insert your sidebar items here -->
-        <h3>Новости</h3>
+        <h2>Новости</h2>
         <h4>Гайст повернул назад</h4>
         <h5>January 1st, 2023</h5>
         <p>Еще один участник кругосветной гонки Golden Globe Race – 50-летний француз Арно Гайст – решил сойти с дистанции.</p>
@@ -51,24 +24,21 @@
           <li><a href="#">link 3</a></li>
           <li><a href="#">link 4</a></li>
         </ul>
-        <h3>Search</h3>
-        <form method="post" action="#" id="search_form">
-          <p>
-            <input class="search" type="text" name="search_field" value="Enter keywords....." />
-            <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/search.png" alt="Search" title="Search" />
-          </p>
-        </form>
       </div>
       <div id="content">
         <!-- insert the page content here -->
-        <h1>Объявление</h1>
-        <p>Для участия в 200 мильной регате на яхту Тихэ требуется кок.</p>
+        <h2>Объявление</h2>
+        <p>Для участия в 200 мильной регате на яхту "Тихэ" требуется профессиональный кок.</p>
+        <h4>Требования</h4>
+          <ul>
+          <li>Навыки приготовления пищи при большой волне и еще большем крене.</li>
+          <li>Владение техниками приготовления здорового питания.</li>
+          <li>Умение работать в стрессовых ситуациях.</li>
+          <li>Отсутствие вредной привычки спорить с капитаном.</li>
+        </ul>
       </div>
     </div>
     <div id="content_footer"></div>
     Copyright &copy; Popeye the Yacht School
     <div id="footer">
     </div>
-  </div>
-</body>
-</html>
