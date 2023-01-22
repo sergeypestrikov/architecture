@@ -1,0 +1,34 @@
+{% block title %}
+    {% include "base.html" %}
+{% endblock %}
+{% block menu %}
+	{% include "menu.html" %}
+{% endblock %}
+
+{% block body %}
+
+ <div id="content_header"></div>
+    <div id="site_content"></div>
+      <div class="sidebar"></div>
+
+{% block body %}
+    <div>
+        <a href="/courses/?id={{id}}">назад</a>
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <h4>Создание курса для категории "{{name}}"</h4>
+        <form method="post">
+            <input type="text" name="name" placeholder="Название">
+            <button type="submit">Сохранить и вернуться к списку курсов</button>
+        </form>
+    </div>
+{% endblock %}
+
+<div id="content_footer"></div>
+    <div id="footer">
+      Copyright &copy; Popeye the Yacht School
+    </div>

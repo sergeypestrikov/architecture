@@ -30,6 +30,20 @@
 {% block menu %}
 	{% include "menu.html" %}
 {% endblock %}
+{% block body %}
+	<div>
+		<a href="/generate_category/">Создать новую категорию</a>
+	</div>
+	<div>
+		<h3>Список существующих категорий</h3>
+        {% for item in objects_list %}
+        <li>
+            {{item.name}} <span>Количество курсов: {{item.courses_counter()}}</span>
+			<a href="/courses/?id={{item.id}}">Показать курсы</a>
+        </li>
+        {% endfor %}
+	</div>
+{% endblock %}
     </div>
         <!-- insert the page content here -->
         <h2>Добро пожаловать в яхтенную школу "Папай"</h2>
