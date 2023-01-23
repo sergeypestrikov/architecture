@@ -13,14 +13,14 @@ def other_front(request):
 
 fronts = [front_controller, other_front]
 
-routes = {
-    '/': Index(),
-    '/news/': News(),
-    '/blog/': Blog(),
-    '/program/': Program(),
-    '/courses/': Courses(),
-    '/contacts/': Contacts(),
-    '/category_list/': CategoryList(),
-    '/generate_category/': GenerateCategory(),
-    '/generate_course/': GenerateCourse()
-}
+# routes = {
+#     '/': Index(),
+#     '/news/': News(),
+#     '/blog/': Blog(),
+#     '/program/': Program(),
+#     '/courses/': Courses(),
+#     '/contacts/': Contacts(),
+#     '/category_list/': CategoryList(),
+#     '/generate_category/': GenerateCategory(),
+#     '/generate_course/': GenerateCourse()
+# }

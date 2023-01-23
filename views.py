@@ -2,50 +2,65 @@ from datetime import date
 
 from wsgi_framework.templater import render
 from patterns.generative import Engine, Logger
+from patterns.structural import MainRoute, TimeLog
 
 site = Engine()
 logger = Logger('main')
+
+routes = {}
 
 # Обработчики запросов (вьюшки)
 
 
 # Контроллер - главная страница
+@MainRoute(routes=routes, url='/')
 class Index:
+    @TimeLog(name='Index')
     def __call__(self, request):
         return '200 OK', render('index.html', objects_list=site.categories)
 
 
 # Контроллер - новости
+@MainRoute(routes=routes, url='/news/')
 class News:
+    @TimeLog(name='News')
     def __call__(self, request):
         return '200 OK', render('news.html', date=date.today())
 
 
 # Контроллер - блог
+@MainRoute(routes=routes, url='/blog/')
 class Blog:
+    @TimeLog(name='Blog')
     def __call__(self, request):
         return '200 OK', render('blog.html')
 
 
 # Контроллер - контакты
+@MainRoute(routes=routes, url='/contacts/')
 class Contacts:
+    @TimeLog(name='Contacts')
     def __call__(self, request):
         return '200 OK', render('contacts.html')
 
 
 # Контроллер - программа обучения
+@MainRoute(routes=routes, url='/program/')
 class Program:
+    @TimeLog(name='Program')
     def __call__(self, request):
         return '200 OK', render('program.html', date=date.today())
 
 
 # Контроллер 404
 class NotFound404:
+    @TimeLog(name='NotFound404')
     def __call__(self, request):
         return '404 WHAT', '404 PAGE Not Found'
 
 
 # Контроллер - курсы
+@MainRoute(routes=routes, url='/courses/')
 class Courses:
     def __call__(self, request):
         logger.log('Список курсов')
@@ -58,6 +73,7 @@ class Courses:
 
 
 # Контроллер - создание курса
+@MainRoute(routes=routes, url='/generate_course/')
 class GenerateCourse:
     category_id = -1
 
@@ -88,6 +104,7 @@ class GenerateCourse:
 
 
 # Контроллер - создание категории
+@MainRoute(routes=routes, url='/generate_category/')
 class GenerateCategory:
     def __call__(self, request):
 
@@ -113,6 +130,7 @@ class GenerateCategory:
 
 
 # Контроллер - список категорий
+@MainRoute(routes=routes, url='/category_list/')
 class CategoryList:
     def __call__(self, request):
         logger.log('Список категорий')
@@ -120,6 +138,7 @@ class CategoryList:
 
 
 # Контроллер - копир курса
+@MainRoute(routes=routes, url='/courses_copy/')
 class CoursesCopy:
     def __call__(self, request):
         request_params = request['request_params']
