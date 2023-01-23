@@ -1,5 +1,5 @@
 from datetime import date
-from views import Index, News, Courses, Contacts, Blog
+from views import Index, News, Courses, Contacts, Blog, GenerateCategory, CoursesCopy, CategoryList, GenerateCourse, Program
 
 
 # Реализация Front Controller
@@ -17,6 +17,10 @@ routes = {
     '/': Index(),
     '/news/': News(),
     '/blog/': Blog(),
+    '/program/': Program(),
     '/courses/': Courses(),
     '/contacts/': Contacts(),
+    '/category_list/': CategoryList(),
+    '/generate_category/': GenerateCategory(),
+    '/generate_course/': GenerateCourse()
 }

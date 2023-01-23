@@ -1,0 +1,37 @@
+{% block title %}
+    {% include "base.html" %}
+{% endblock %}
+{% block menu %}
+	{% include "menu.html" %}
+{% endblock %}
+{% block body %}
+
+<div>
+
+</div>
+
+    <a href="/">назад</a>
+
+    <h4>Список категорий</h4>
+    <ul>
+
+        {% for item in objects_list %}
+        <li>
+            {{item.name}} <span>Количество курсов: {{item.courses_counter()}}</span>
+        </li>
+        {% endfor %}
+    </ul>
+
+	<div>
+		<li><a href="/courses/">Список курсов</a></li>
+		<li><a href="/generate_course/">Создать курс</a></li>
+	</div>
+{% endblock %}
+
+<br>
+<br>
+
+<div id="content_footer"></div>
+    <div id="footer">
+      Copyright &copy; Popeye the Yacht School
+    </div>

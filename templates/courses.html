@@ -1,121 +1,25 @@
-<!DOCTYPE HTML>
-<html>
-
-<head>
-  <meta charset = "utf-8" >
-  <title>black &amp; white - examples</title>
-  <meta name="description" content="website description" />
-  <meta name="keywords" content="website keywords, website keywords" />
-  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-  <link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
-</head>
-
-<body>
-  <div id="main">
-    <div id="header">
-      <div id="logo">
-        <div id="logo_text">
-          <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="index.html">Popeye<span class="logo_colour"></span></a></h1>
-          <h2>The Yacht School</h2>
-        </div>
-      </div>
-      <div id="menubar">
-        <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li><a href='/'>Home</a></li>
-          <li><a href=/news/>Новости</a></li>
-          <li><a href=/blog/>Блог</a></li>
-          <li><a href=/courses/>Курсы</a></li>
-          <li><a href=/contacts/>Контакты</a></li>
-        </ul>
-      </div>
+{% block title %}
+    {% include "base.html" %}
+{% endblock %}
+{% block menu %}
+	{% include "menu.html" %}
+{% endblock %}
+{% block body %}
+    <div>
+        <a href="/">назад на главную</a>
     </div>
-    <div id="content_header"></div>
-    <div id="site_content">
 
-      <div id="content">
-        <!-- insert the page content here -->
-        <h1>Наши курсы</h1>
-        <p>In our nautical school you can get all the necessary certificates.</p>
-        <h3>ЯХТЕННЫЙ ШКИПЕР</h3>
-        <p>Продвинутый курс подготовки судоводителей некоммерческих парусных и моторных яхт, достаточный для управления собственным или взятым в аренду/чартер судном в любой точке мира.</p>
-        <p>Полученные теоретические знания, подкрепленные последующим практическим обучением, позволят уверенно ходить в прибрежных районах моря с удалением от берега до 50 миль, планировать дальние морские переходы, а также эксплуатировать судовые системы до уровня среднего ремонта.</p>
+    <br>
+    <br>
 
-        <h3>ЧАРТЕРНЫЙ ШКИПЕР</h3>
-        <p>Комплексный курс подготовки капитанов парусных и моторных яхт достаточный для управления круизной яхтой, взятой в аренду/чартер в любой точке мира.</p>
-        <p>Программа курса поэтапная, состоит из теоретических занятий, включая навигационную прокладку на картах, курса практической подготовки на крейсерских яхтах школы и квалификационного плавания для получения плавательского ценза 200 миль.</p>
-        <p>Теория усилена широким освещением юридических моментов, таких как: процедура аренды яхты у чартерной компании за рубежом, ответственность сторон, разрешение спорных случаев, правила плавания в территориальных водах и т.д.</p>
-
-        <h3>ЯХТЕННЫЙ КАПИТАН ПРИБРЕЖНОГО ПЛАВАНИЯ</h3>
-        <p>Теоретический курс обучения капитанов крейсерских яхт.</p>
-        <p>После обучения вы сможете командовать парусным и моторным некоммерческим судном без ограничения парусности в районе плавания до 200 миль от места убежища, имея легитимные во всем мире российские государственные документы.</p>
-
-        <h3>ЯХТЕННЫЙ МАТРОС-РУЛЕВОЙ</h3>
-        <p>Цель курса – получение теоретических знаний и практических навыков, позволяющих начинающему яхтсмену влиться в любой экипаж спортивного парусного судна.</p>
-
-        <h3>МОРЕХОДНАЯ АСТРОНОМИЯ</h3>
-        <p>В процессе обучения на курсе «Мореходная  астрономия» вы получите практические навыки определения географических координат места яхты в открытом море по небесным светилам, при помощи астронавигационных инструментов и таблиц эфемерид с точностью 1-2 мили.<p>
-        <p>Научитесь рассчитывать время восхода и захода Солнца, время начала гражданских и навигационных сумерек, определять поправку компаса при восходе Солнца или по Полярной звезде, определять фазы и возраст Луны, как фактор освещенности района плавания.</p>
-        <p>Получите представление о небесной сфере, основных точках и плоскостях и принципах расположения и движения небесных светил по сфере, поймете связь небесных и географических координат, а так же разберетесь в различиях между судовым, местным, поясным, гринвичским и звездным временем.<p>
-
-        <h2>Автор и преподаватель курсов</h2>
-        <p>Капитан дальнего плавания, преподаватель высшей категории.</p>
-        <p><strong> </strong></p>
-        <p><i>Сергей Пестриков</i></p>
-        <p><a href="#">This is a hyperlink</a></p>
-        <h2> </h2>
-        <p>Награды:</p>
-        <ul>
-          <li>Орден «Знак Почета»</li>
-          <li>Медаль «300-лет Российского флота»</li>
-          <li>Медаль «Ветеран труда»</li>
-          <li>Медаль «Почетный работник профессионального образования»</li>
-        </ul>
-
-        <h2>Галерея</h2>
-        <p>images can be placed on the left, in the center or on the right:</p>
-        <span class="left"><img src="style/graphic.png" alt="example graphic" /></span>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum.
-        </p>
-        <span class="center"><img src="style/graphic.png" alt="example graphic" /></span>
-        <span class="right"><img src="style/graphic.png" alt="example graphic" /></span>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-        </p>
-        <h2>Tables</h2>
-        <p>Tables should be used to display data and not used for laying out your website:</p>
-        <table style="width:100%; border-spacing:0;">
-          <tr><th>Item</th><th>Description</th></tr>
-          <tr><td>Item 1</td><td>Description of Item 1</td></tr>
-          <tr><td>Item 2</td><td>Description of Item 2</td></tr>
-          <tr><td>Item 3</td><td>Description of Item 3</td></tr>
-          <tr><td>Item 4</td><td>Description of Item 4</td></tr>
-        </table>
-        <h2>Form Elements</h2>
-        <form action="#" method="post">
-          <div class="form_settings">
-            <p><span>Form field example</span><input type="text" name="name" value="" /></p>
-            <p><span>Textarea example</span><textarea rows="8" cols="50" name="name"></textarea></p>
-            <p><span>Checkbox example</span><input class="checkbox" type="checkbox" name="name" value="" /></p>
-            <p><span>Dropdown list example</span><select id="id" name="name"><option value="1">Example 1</option><option value="2">Example 2</option></select></p>
-            <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="name" value="button" /></p>
-          </div>
-        </form>
-      </div>
+    <div>
+        <a href="/generate_course/?id={{id}}">Создать новый курс</a>
+        <br>
+        <h1>Список курсов для категории "{{name}}"</h1>
+        {% for item in objects_list %}
+        <li>
+            {{item.name}} <span><a href="/courses_copy/?name={{item.name}}">скопировать</a></span>
+        </li>
+        {% endfor %}
     </div>
-    <div id="content_footer"></div>
-    <div id="footer">
-      Copyright &copy; Popeye the Yacht School
-    </div>
-  </div>
-</body>
-</html>
+{% endblock %}

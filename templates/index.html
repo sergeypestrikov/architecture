@@ -1,9 +1,10 @@
 <!DOCTYPE HTML>
+
 <html>
 
 <head>
   <meta charset = "utf-8" >
-  <title>black &amp; white</title>
+  <title>Яхтенная Школа "Папай"</title>
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
@@ -19,17 +20,30 @@
           <h1><a href="/">Popeye<span class="logo_colour"></span></a></h1>
           <h2>The Yacht School</h2>
         </div>
+        <form method="post" action="#" id="search_form">
+          <p>
+            <input class="search" type="text" name="search_field" value="Введите слово..." />
+            <input name="search" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/search.png" alt="Поиск" title="Поиск" />
+          </p>
+        </form>
       </div>
-      <div id="menubar">
-        <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href='/'>Home</a></li>
-          <li><a href=/news/>Новости</a></li>
-          <li><a href=/blog/>Блог</a></li>
-          <li><a href=/courses/>Курсы</a></li>
-          <li><a href=/contacts/>Контакты</a></li>
-        </ul>
-      </div>
+{% block menu %}
+	{% include "menu.html" %}
+{% endblock %}
+{% block body %}
+	<div>
+		<a href="/generate_category/">Создать новую категорию</a>
+	</div>
+	<div>
+		<h3>Список существующих категорий</h3>
+        {% for item in objects_list %}
+        <li>
+            {{item.name}} <span>Количество курсов: {{item.courses_counter()}}</span>
+			<a href="/courses/?id={{item.id}}">Показать курсы</a>
+        </li>
+        {% endfor %}
+	</div>
+{% endblock %}
     </div>
         <!-- insert the page content here -->
         <h2>Добро пожаловать в яхтенную школу "Папай"</h2>

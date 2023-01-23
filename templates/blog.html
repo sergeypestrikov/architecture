@@ -1,39 +1,13 @@
-<!DOCTYPE HTML>
-<html>
-
-<head>
-  <meta charset = "utf-8" >
-  <title>black &amp; white - a page</title>
-  <meta name="description" content="website description" />
-  <meta name="keywords" content="website keywords, website keywords" />
-  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-  <link rel="stylesheet" type="text/css" href="style/style.css" title="style" />
-</head>
-
-<body>
-  <div id="main">
-    <div id="header">
-      <div id="logo">
-        <div id="logo_text">
-          <!-- class="logo_colour", allows you to change the colour of the text -->
-          <h1><a href="index.html">Popeye<span class="logo_colour"></span></a></h1>
-          <h2>The Yacht School</h2>
-        </div>
-      </div>
-      <div id="menubar">
-        <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li><a href='/'>Home</a></li>
-          <li><a href=/news/>Новости</a></li>
-          <li><a href=/blog/>Блог</a></li>
-          <li><a href=/courses/>Курсы</a></li>
-          <li><a href=/contacts/>Контакты</a></li>
-        </ul>
-      </div>
-    </div>
+{% block title %}
+    {% include "base.html" %}
+{% endblock %}
+{% block menu %}
+	{% include "menu.html" %}
+{% endblock %}
     <div id="content_header"></div>
-    <div id="site_content">
-      <div class="sidebar">
+    <div id="site_content"></div>
+      <div class="sidebar"></div>
+          <h2>Блог: Судовой журнал</h2>
         <!-- insert your sidebar items here -->
         <h3>Вдвоем на борту</h3>
         <h5>автор: Сергей Пестриков</h5>
@@ -52,10 +26,9 @@
           <li><a href="#">link 3</a></li>
           <li><a href="#">link 4</a></li>
         </ul>
-      </div>
       <div id="content">
         <!-- insert the page content here -->
-        <h2>Морская практика: Человек за бортом. Происшествие в Турции.</h2>
+        <h3>Морская практика: Человек за бортом. Происшествие в Турции.</h3>
         <p>Чартерная яхта. Экипаж – шкипер, его жена и 3 детей. Опыт управления яхтой только у шкипера.</p>
         <p>Судно движется под парусом на автопилоте, скорость около 1 узла. Ветер слабый не более 8 узлов (по прогнозу), очевидцы говорят, что штиль, во что слабо верится, иначе бы яхта стояла? По данным принимавших участие в спасении скорость ветра 6 узлов (есть фото приборов). Экипировка шкипера – трусы.
 В районе 14-ХХ шкипер прыгает за борт спасать квадрокоптер. На ходу.
@@ -78,6 +51,3 @@
     <div id="footer">
       Copyright &copy; Popeye the Yacht School
     </div>
-  </div>
-</body>
-</html>
