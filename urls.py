@@ -1,5 +1,5 @@
 from datetime import date
-from views import Index, News, Courses, Contacts, Blog, GenerateCategory, CoursesCopy, CategoryList, GenerateCourse, Program
+# from views import Index, News, CoursesList, Contacts, Blog, GenerateCategory, CoursesCopy, CategoryList, GenerateCourse, Program
 
 
 # Реализация Front Controller

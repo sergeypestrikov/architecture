@@ -1,10 +1,12 @@
 from copy import deepcopy
 from quopri import decodestring
+from patterns.behavioral import Subject, FileLog
 
 
 # Абстрактный класс пользователя
 class User:
-    pass
+    def __init__(self, name):
+        self.name = name
 
 
 # Преподаватель
@@ -14,7 +16,9 @@ class Teacher(User):
 
 # Студент
 class Student(User):
-    pass
+    def __init__(self, name):
+        self.courses = []
+        super().__init__(name)
 
 
 class UserFactory:
@@ -25,8 +29,8 @@ class UserFactory:
 
     # Фабричный метод the pattern
     @classmethod
-    def generate(cls, type_):
-        return cls.users[type_]()
+    def generate(cls, type_, name):
+        return cls.users[type_](name)
 
 
 # Прототип the pattern
@@ -36,41 +40,40 @@ class CoursesProto:
         return deepcopy(self)
 
 
-class Courses(CoursesProto):
+class Course(CoursesProto, Subject):
     def __init__(self, name, category):
         self.name = name
         self.category = category
         self.category.courses.append(self)
+        self.students = []
+        super().__init__()
+
+    def __getitem__(self, item):
+        return self.students[item]
+
+    def add_student(self, student: Student):
+        self.students.append(student)
+        student.courses.append(self)
+        self.notify()
 
 
 # Очные курсы
-class OfflineCourses(Courses):
+class OfflineCourses(Course):
     pass
 
 
 # Онлайн курсы
-class OnlineCourses(Courses):
+class OnlineCourses(Course):
     pass
 
 
-class CoursesFactory:
-    types = {
-        'offline': OfflineCourses,
-        'online': OnlineCourses
-    }
-    # Фабричный метод the pattern
-    @classmethod
-    def generate(cls, type_, name, category):
-        return cls.types[type_](name, category)
-
-
 # Каталог (категории)
-class Catalog:
+class Category:
     category_id = 0
 
     def __init__(self, name, category):
-        self.id = Catalog.category_id
-        Catalog.category_id += 1
+        self.id = Category.category_id
+        Category.category_id += 1
         self.name = name
         self.category = category
         self.courses = []
@@ -82,6 +85,18 @@ class Catalog:
         return result
 
 
+class CoursesFactory:
+    types = {
+        'offline': OfflineCourses,
+        'online': OnlineCourses
+    }
+
+    # Фабричный метод the pattern
+    @classmethod
+    def generate(cls, type_, name, category):
+        return cls.types[type_](name, category)
+
+
 # Основной интерфейс
 class Engine:
     def __init__(self):
@@ -91,12 +106,12 @@ class Engine:
         self.categories = []
 
     @staticmethod
-    def generate_user(type_):
-        return UserFactory.generate(type_)
+    def generate_user(type_, name):
+        return UserFactory.generate(type_, name)
 
     @staticmethod
     def generate_category(name, category=None):
-        return Catalog(name, category)
+        return Category(name, category)
 
     def find_category_by_id(self, id):
         for item in self.categories:
@@ -114,6 +129,11 @@ class Engine:
             if item.name == name:
                 return item
         return None
+
+    def get_student(self, name) -> Student:
+        for item in self.students:
+            if item.name == name:
+                return item
 
     @staticmethod
     def decode_value(val):
@@ -143,9 +163,10 @@ class Singletone(type):
 
 # Логгер
 class Logger(metaclass=Singletone):
-    def __init__(self, name):
+    def __init__(self, name, writer=FileLog()):
         self.name = name
+        self.writer = writer
 
-    @staticmethod
-    def log(text):
-        print('logger says', text)
+    def log(self, text):
+        text = f'loger says: {text}, '
+        self.writer.write(text)

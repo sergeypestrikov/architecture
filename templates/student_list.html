@@ -1,0 +1,28 @@
+{% block title %}
+    {% include "base.html" %}
+{% endblock %}
+{% block menu %}
+	{% include "menu.html" %}
+{% endblock %}
+{% block body %}
+	<div>
+		<li>
+			<a href="/create_student/">Создать студента</a>
+		</li>
+		<li>
+			<a href="/add_student/">Добавить студента на курс</a>
+		</li>
+	</div>
+    <h1>Список студентов</h1>
+    <div>
+
+        {% for item in objects_list %}
+        <li>
+            {{item.name}}
+            {% for course in item.courses %}
+                {{courses.name}}
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </div>
+{% endblock %}
