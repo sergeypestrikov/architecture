@@ -57,3 +57,28 @@ class Framework:
             value_decode = decodestring(value).decode('UTF-8')
             new_data[k] = value_decode
         return new_data
+
+
+# Новый вид WSGI App
+# Первый - логирующий (для каждого запроса выводит инфу в консоль)
+class LogApp(Framework):
+    def __init__(self, routes, fronts):
+        self.application = Framework(routes, fronts)
+        super().__init__(routes, fronts)
+
+    def __call__(self, env, start_response):
+        print('LOGER MODE')
+        print(env)
+        return self.application(env, start_response)
+
+
+# Новый вид WSGI App
+# Второй - фейковый (на все запросы отвечает 200 ОК, Fake
+class FakeApp(Framework):
+    def __init__(self, routes, fronts):
+        self.application = Framework(routes, fronts)
+        super().__init__(routes, fronts)
+
+    def __call__(self, env, start_response):
+        start_response('200 OK', [('Content-Type', 'text/html')])
+        return [b'Its Fake']
