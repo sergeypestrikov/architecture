@@ -1,14 +1,17 @@
 from datetime import date
 
 from wsgi_framework.templater import render
-from patterns.generative import Engine, Logger
+from patterns.generative import Engine, Logger, MapperRegistry
 from patterns.structural import MainRoute, TimeLog
 from patterns.behavioral import SMSNotifier, EmailNotifier, Serializer, ListView, CreateView, ConsoleLog, FileLog
+from patterns.architectural_system_pattern_unit_of_work import UnitOfWork
 
 site = Engine()
 logger = Logger('main')
 email_notifier = EmailNotifier()
 sms_notifier = SMSNotifier()
+UnitOfWork.new_current()
+UnitOfWork.get_current().set_mapper_registry(MapperRegistry)
 
 routes = {}
 
@@ -167,8 +170,12 @@ class CoursesCopy:
 
 @MainRoute(routes=routes, url='/student_list/')
 class StudentListView(ListView):
-    queryset = site.students
+    # queryset = site.students
     template_name = 'student_list.html'
+
+    def get_queryset(self):
+        mapper = MapperRegistry.get_current_mapper('student')
+        return mapper.all()
 
 
 @MainRoute(routes=routes, url='/create_student/')
@@ -180,6 +187,8 @@ class StudentCreateView(CreateView):
         name = site.decode_value(name)
         new_obj = site.generate_user('student', name)
         site.students.append(new_obj)
+        new_obj.new_mark()
+        UnitOfWork.get_current().commit()
 
 
 @MainRoute(routes=routes, url='/add_student/')
@@ -188,7 +197,7 @@ class AddStudent(CreateView):
 
     def get_context_data(self):
         context = super().get_context_data()
-        context['course'] = site.courses
+        context['courses'] = site.courses
         context['students'] = site.students
         return context
 
@@ -206,4 +215,4 @@ class AddStudent(CreateView):
 class CourseAPI:
     @TimeLog(name='CourseAPI')
     def __call__(self, request):
-        return '200 OK', Serializer(site.courses).save()
+        return '200 OK', Serializer(site.courses).dump()

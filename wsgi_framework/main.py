@@ -50,7 +50,7 @@ class Framework:
 
     @staticmethod
     def decode_value(data):
-        # Решение проблемы с кодировкой (что бы данные на кирилице корректно отображались)
+        # Решение проблемы с кодировкой (что бы данные на кириллице корректно отображались)
         new_data = {}
         for k, v in data.items():
             value = bytes(v.replace('%', '=').replace('+', ' '), 'UTF-8')
