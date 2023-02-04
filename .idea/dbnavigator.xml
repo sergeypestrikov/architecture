@@ -45,7 +45,7 @@
     <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/create_data_base.sql" connection-id="2f72f394-9267-41da-9a6b-4e1956dcd69c" session-id="MAIN" current-schema="" />
+    <mapping file-url="file://$PROJECT_DIR$/create_data_base.sql" connection-id="2f72f394-9267-41da-9a6b-4e1956dcd69c" session-id="MAIN" current-schema="main" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -72,7 +72,7 @@
     <connections>
       <connection id="2f72f394-9267-41da-9a6b-4e1956dcd69c" active="true" signed="true">
         <database>
-          <name value="Connection" />
+          <name value="Popeye" />
           <description value="Yacht_School" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
@@ -85,7 +85,7 @@
           <port value="" />
           <database value="" />
           <files>
-            <file path="$PROJECT_DIR$/create_data_base.sql" schema="main" />
+            <file path="$PROJECT_DIR$/patterns.sqlite" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />

@@ -232,7 +232,7 @@ connection = connect('patterns.sqlite')
 class MapperRegistry:
     mappers = {
         'student': StudentMapper,
-        #'category': CategoryMapper
+        # 'category': CategoryMapper
     }
 
     @staticmethod
